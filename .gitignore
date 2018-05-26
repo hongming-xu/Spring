@@ -1,6 +1,12 @@
 # Compiled class file
 *.class
 
+# 屏蔽target文件夹
+*/target/
+*/.idea
+*.iml
+
+
 # Log file
 *.log
 
