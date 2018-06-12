@@ -8,6 +8,15 @@ public class User implements Serializable {
     private String userName;
     private String password;
 
+    public User() {
+    }
+
+    public User(int userId, String userName, String password) {
+        this.userId = userId;
+        this.userName = userName;
+        this.password = password;
+    }
+
     public int getUserId() {
         return userId;
     }
@@ -31,4 +40,14 @@ public class User implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + userId +
+                ", username='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
+
 }
