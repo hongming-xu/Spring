@@ -81,4 +81,21 @@ public class UserDao extends BaseDao{
         String sql = "insert into t_user (user_name,password) values (?,?)";
         jdbcTemplate.batchUpdate(sql, batchArgs);
     }
+
+    public void batchDeleteOperation(){
+        List<Object[]> batchArgs=new ArrayList<Object[]>();
+        batchArgs.add(new Object[]{1});
+        batchArgs.add(new Object[]{2});
+        String sql = "delete from t_user where id = ?";
+        jdbcTemplate.batchUpdate(sql, batchArgs);
+    }
+
+    public void batchDeleteOperation2(){
+        List<Object[]> batchArgs=new ArrayList<Object[]>();
+        batchArgs.add(new Object[]{1});
+        batchArgs.add(new Object[]{2});
+        String sql = "delete user, relation from t_user user join user_department_relation relation on user.id = relation.user_id where user.id = ?";
+        jdbcTemplate.batchUpdate(sql, batchArgs);
+    }
+
 }

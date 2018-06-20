@@ -8,6 +8,8 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
+import javax.annotation.PostConstruct;
+
 public class JuiceMaker2 implements BeanNameAware, BeanFactoryAware, ApplicationContextAware, InitializingBean {
 	private String beverageShop = null;
 	private Source source = null;
@@ -33,6 +35,7 @@ public class JuiceMaker2 implements BeanNameAware, BeanFactoryAware, Application
 		return juice;
 	}
 
+//	@PostConstruct   //若采用注解，则可以使用@PostConstruct
 	public void init() {
 		System.out.println("【" + this.getClass().getSimpleName() + "】执行自定义初始化方法");
 	}
@@ -41,24 +44,20 @@ public class JuiceMaker2 implements BeanNameAware, BeanFactoryAware, Application
 		System.out.println("【" + this.getClass().getSimpleName() + "】执行自定义销毁方法");
 	}
 
-	@Override
 	public void setBeanName(String arg0) {
 		System.out.println("【" + this.getClass().getSimpleName() + "】调用BeanNameAware接口的setBeanName方法");
 
 	}
 
-	@Override
 	public void setBeanFactory(BeanFactory arg0) throws BeansException {
 		System.out.println("【" + this.getClass().getSimpleName() + "】调用BeanFactoryAware接口的setBeanFactory方法");
 	}
 
-	@Override
 	public void setApplicationContext(ApplicationContext arg0) throws BeansException {
 		System.out.println(
 				"【" + this.getClass().getSimpleName() + "】调用ApplicationContextAware接口的setApplicationContext方法");
 	}
 
-	@Override
 	public void afterPropertiesSet() throws Exception {
 		System.out.println("【" + this.getClass().getSimpleName() + "】调用InitializingBean接口的afterPropertiesSet方法");
 	}

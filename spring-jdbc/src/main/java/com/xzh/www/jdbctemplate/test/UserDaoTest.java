@@ -47,6 +47,9 @@ public class UserDaoTest{
 
     }
 
-
+    @Test
+    public void testBatchUpdate(){
+        userDao.batchDeleteOperation2();
+    }
 
 }
