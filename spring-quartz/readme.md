@@ -31,7 +31,7 @@
 
 注：</br>
 如果想简单方便的方法，可使用MethodInvokeJobDetailFactoryBean；</br>
-如果你需要更高级的设置，需要给作业传递数据，想更加灵活的话就使用MethodInvokeJobDetailFactoryBean. </br>
+如果你需要更高级的设置，需要给作业传递数据，想更加灵活的话就使用JobDetailBean. </br>
 
 _ _ _
 
@@ -78,30 +78,5 @@ https://blog.csdn.net/defonds/article/details/49496895  <br/>
 https://blog.csdn.net/yangshangwei/article/details/78505730  <br/>
 (3)Quartz-Spring集成Quartz通过注解配置的方式  <br/>
 https://blog.csdn.net/yangshangwei/article/details/78514774
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
