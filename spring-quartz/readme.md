@@ -1,7 +1,7 @@
 #   Spring集成Quartz的2种方式
 * * *
 # 一、Spring通过xml的方式集成Quartz
-
+**Maven依赖**
 **步骤**
 - 创建JobDteail
 - 创建Trigger
