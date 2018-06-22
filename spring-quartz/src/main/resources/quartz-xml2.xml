@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+    <context:component-scan base-package="com.xzh.www.xml2"/>
+
+
+    <!-- For times when you need more complex processing, passing data to the scheduled job -->
+    <bean name="firstComplexJobDetail"    class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="jobClass" value="com.xzh.www.xml2.jobs.FirstScheduledJob" />
+        <property name="durability" value="true" />
+    </bean>
+
+    <!-- Always run at 20:00 everyday -->
+    <bean name="secondComplexJobDetail"    class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="jobClass" value="com.xzh.www.xml2.jobs.SecondScheduledJob" />
+        <property name="jobDataMap">
+            <map>
+                <entry key="specificBean" value-ref="specificBean" />
+            </map>
+        </property>
+        <property name="durability" value="true" />
+    </bean>
+
+<!--   *******************************上面定义了任务的操作； 下面定义了任务的触发时间**************************************************************** -->
+
+    <!-- Run the job every 5 seconds -->
+    <bean id="cronTrigger"  class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="firstComplexJobDetail" />
+        <!--<property name="cronExpression" value="0/5 * * ? * SAT-SUN" />-->
+        <property name="cronExpression" value="0/5 * * ? * *" />
+
+    </bean>
+
+    <!-- Always run at 20:00 everyday -->
+    <bean id="secondCronTrigger"  class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="secondComplexJobDetail" />
+        <property name="cronExpression" value="0 35 23 ? * *" />
+    </bean>
+
+<!-- ************SchedulerFactoryBean 将 jobDetails 和 triggers 整合在一起以配置 Quartz 调度器****************** -->
+    <!--
+    在调度器中，有一个lazy-init参数,
+    如果lazy-init=’false’,则容器启动时就会执行调度程序;
+    如果lazy-init=’true’,则需要实例化该bean才能执行调度程序；
+     -->
+    <bean  class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="jobDetails">
+            <list>
+                <ref bean="firstComplexJobDetail" />
+                <ref bean="secondComplexJobDetail" />
+            </list>
+        </property>
+
+        <property name="triggers">
+            <list>
+                <ref bean="cronTrigger" />
+                <ref bean="secondCronTrigger" />
+            </list>
+        </property>
+    </bean>
+
+</beans>
