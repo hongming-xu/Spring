@@ -29,9 +29,9 @@
 - JobDteail通过JobDetailBean实现(需要实现QuartzJobBean接口）
 - JobDteail通过MethodInvokeJobDetailFactoryBean实现
 
-注：
-如果想简单方便的方法，可使用MethodInvokeJobDetailFactoryBean；
-如果你需要更高级的设置，需要给作业传递数据，想更加灵活的话就使用MethodInvokeJobDetailFactoryBean。
+注：</br>
+如果想简单方便的方法，可使用MethodInvokeJobDetailFactoryBean；</br>
+如果你需要更高级的设置，需要给作业传递数据，想更加灵活的话就使用MethodInvokeJobDetailFactoryBean. </br>
 
 _ _ _
 
