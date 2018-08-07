@@ -1,4 +1,4 @@
-package com.xzh.www.service;
+package com.xzh.www.bean;
 
 import com.xzh.www.annotation.Fooish;
 import org.springframework.beans.BeansException;
@@ -55,7 +55,8 @@ public class MyFooishHandler implements ApplicationContextAware, InitializingBea
         final Map<String, Object> controllerMap = applicationContext.getBeansWithAnnotation(Component.class);
         for (final Object controllerObject : controllerMap.values()) {
             final Class<? extends Object> controllerClass = controllerObject.getClass();
-            for (Method method : controllerClass.getDeclaredMethods()) {
+            Method[] methods = controllerClass.getDeclaredMethods();
+            for (Method method : methods) {
                 Fooish fooish = method.getAnnotation(Fooish.class);
                 if (fooish != null) {
                     allFooish.addAll(Arrays.asList(fooish.tags()));

@@ -1,4 +1,4 @@
-package com.xzh.www.service;
+package com.xzh.www.bean;
 
 /**
  * @Description:
@@ -7,8 +7,10 @@ package com.xzh.www.service;
  **/
 
 import com.xzh.www.annotation.Fooish;
+import org.springframework.stereotype.Component;
 
 /** FooA **/
+@Component
 public class FooA implements Foo{
     @Override
     @Fooish(tags={"this_is_method"})

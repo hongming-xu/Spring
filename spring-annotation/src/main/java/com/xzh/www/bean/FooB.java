@@ -1,4 +1,4 @@
-package com.xzh.www.service;
+package com.xzh.www.bean;
 
 /**
  * @Description:

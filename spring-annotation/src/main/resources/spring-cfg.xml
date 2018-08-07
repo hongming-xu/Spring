@@ -9,5 +9,7 @@
         http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 	<!-- 使能aop -->
 	<aop:aspectj-autoproxy />
-    <context:component-scan base-package="com.xzh.www.annotation"/>
+    <context:component-scan base-package="com.xzh.www">
+		<context:include-filter type="annotation" expression="com.xzh.www.annotation.Fooish" />
+	</context:component-scan>
 </beans>

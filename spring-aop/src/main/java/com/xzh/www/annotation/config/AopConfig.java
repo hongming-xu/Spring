@@ -14,7 +14,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  * @Author: xuzh1
  * @Date: 2018-06-11 15:43
  **/
-@Configuration
+@Configuration       //用于定义配置类，表明该类为配置类，代替了xml配置文件
 @EnableAspectJAutoProxy
 @ComponentScan(basePackages = "com.xzh.www.annotation")
 public class AopConfig {
